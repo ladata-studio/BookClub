@@ -1,6 +1,7 @@
+import React from 'react';
 import './styles.css';
 
-function App() {
+const App = () => {
   return <h1>Book Club</h1>;
 }
 
