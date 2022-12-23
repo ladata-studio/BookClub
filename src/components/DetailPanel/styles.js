@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Pill } from '../../styles'
 
 export const Panel = styled.article`
   box-sizing: border-box;
@@ -62,20 +63,10 @@ export const Close = styled.button`
   }
 `
 
-export const CloseWrapper = styled.div`
+export const CloseWrapper = styled(Pill)`
   position: fixed;
   top: 120px;
   right: 40px;
-  width: 20px;
-  height: 20px;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border: 2px solid #000000;
-  border-radius: 50%;
-  background: #a7e1f8;
   cursor: pointer;
   z-index: 4;
 `

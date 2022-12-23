@@ -4,12 +4,14 @@ import {useState} from 'react'
 import BooksContainer from './components/BooksContainer'
 import DetailPanel from './components/DetailPanel'
 import Header from './components/Header'
+import Search from './components/Search'
 import './styles.js'
 import {GlobalStyle} from './styles.js'
 
 const App = () => {
   const [books, setBooks] = useState([])
   const [selectedBook, setSelectedBook] = useState(null)
+  const [filteredBooks, setFilteredBooks] = useState([])
 
   useEffect(() => {
     console.log(selectedBook !== null)
@@ -20,6 +22,7 @@ const App = () => {
         )
         const books = await response.json()
         setBooks(books)
+        setFilteredBooks(books)
       } catch (errors) {
         console.log(errors)
       }
@@ -36,13 +39,36 @@ const App = () => {
     setSelectedBook(null)
   }
 
+  const filterBooks = (searchTerm) => {
+    console.log(searchTerm)
+    const stringSearch = (bookAttribute, searchTerm) =>
+      bookAttribute.toLowerCase().includes(searchTerm.toLowerCase())
+
+    if (!searchTerm) {
+      setFilteredBooks(books)
+    } else {
+      setFilteredBooks(
+        books.filter(
+          (book) =>
+            stringSearch(book.title, searchTerm) ||
+            stringSearch(book.author, searchTerm)
+        )
+      )
+    }
+  }
+
+  const hasFiltered = books.length !== filteredBooks.length
+
   return (
     <>
-      <Header />
+      <Header>
+        <Search onChange={filterBooks} />
+      </Header>
       <GlobalStyle />
       {books.length > 0 && (
         <BooksContainer
-          books={books}
+          books={filteredBooks}
+          hasFiltered={hasFiltered}
           onSelect={selectBook}
           isPanelOpen={selectedBook !== null}
         />
