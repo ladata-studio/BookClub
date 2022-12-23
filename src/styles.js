@@ -23,3 +23,32 @@ export const Pill = styled.div`
   border-radius: 30px;
   background-color: #a7e1f8;
 `
+
+export const Close = styled.button`
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 9px;
+    width: 2px;
+    height: 24px;
+    background-color: #000000;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+`

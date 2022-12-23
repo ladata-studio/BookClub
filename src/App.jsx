@@ -14,9 +14,9 @@ const App = () => {
   const [filteredBooks, setFilteredBooks] = useState([])
 
   useEffect(() => {
-    console.log(selectedBook !== null)
     const fetchData = async () => {
       try {
+        console.log('fetching books')
         const response = await fetch(
           'https://book-club-json.herokuapp.com/books'
         )
@@ -29,7 +29,7 @@ const App = () => {
     }
 
     fetchData()
-  }, [selectedBook])
+  }, [])
 
   const selectBook = (book) => {
     setSelectedBook(book)
@@ -40,7 +40,6 @@ const App = () => {
   }
 
   const filterBooks = (searchTerm) => {
-    console.log(searchTerm)
     const stringSearch = (bookAttribute, searchTerm) =>
       bookAttribute.toLowerCase().includes(searchTerm.toLowerCase())
 

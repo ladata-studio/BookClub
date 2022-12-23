@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Pill } from '../../styles'
+import {Pill} from '../../styles'
 
 export const Panel = styled.article`
   box-sizing: border-box;
@@ -20,6 +20,7 @@ export const Panel = styled.article`
     padding: 40px 86px 20px 20px;
     right: unset;
     border-left: none;
+    z-index: 3;
   }
 `
 export const P = styled.p`
@@ -34,41 +35,18 @@ export const Em = styled.em`
   font-style: italic;
 `
 
-export const Close = styled.button`
-  position: relative;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 9px;
-    width: 2px;
-    height: 24px;
-    background-color: #000000;
-  }
-
-  &::before {
-    transform: rotate(45deg);
-  }
-
-  &::after {
-    transform: rotate(-45deg);
-  }
-`
-
 export const CloseWrapper = styled(Pill)`
   position: fixed;
   top: 120px;
   right: 40px;
   cursor: pointer;
   z-index: 4;
+
+  @media screen and (max-width: 800px) {
+    top: unset;
+    right: 20px;
+    bottom: 20px;
+  }
 `
 
 export const BG = styled.div`

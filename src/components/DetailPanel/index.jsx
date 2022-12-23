@@ -1,6 +1,7 @@
 import React from 'react'
+import { Close } from '../../styles'
 import Book from '../Book'
-import {BG, Close, CloseWrapper, Em, P, Panel} from './styles'
+import {BG, CloseWrapper, Em, P, Panel} from './styles'
 
 const DetailPanelComponent = ({book, closePanel}) => {
   return (
