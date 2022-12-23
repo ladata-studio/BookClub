@@ -2,6 +2,7 @@ import React from 'react'
 import {useEffect} from 'react'
 import {useState} from 'react'
 import BooksContainer from './components/BooksContainer'
+import Header from './components/Header'
 import './styles.js'
 import {GlobalStyle} from './styles.js'
 
@@ -26,8 +27,8 @@ const App = () => {
 
   return (
     <>
+      <Header />
       <GlobalStyle />
-      <h1>Book Club</h1>
       {books.length > 0 && <BooksContainer books={books} />}
     </>
   )
