@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  position: ${({isPanelOpen}) => (isPanelOpen ? 'fixed' : 'static')};
   padding: 160px 40px;
-  overflow: scroll;
+  overflow: ${({isPanelOpen}) => (isPanelOpen ? 'hidden' : 'scroll')};
   background-color: #a7e1f8;
 
   @media screen and (max-width: 800px) {

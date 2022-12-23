@@ -12,6 +12,7 @@ const App = () => {
   const [selectedBook, setSelectedBook] = useState(null)
 
   useEffect(() => {
+    console.log(selectedBook !== null)
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -25,10 +26,14 @@ const App = () => {
     }
 
     fetchData()
-  }, [])
+  }, [selectedBook])
 
   const selectBook = (book) => {
     setSelectedBook(book)
+  }
+
+  const closePanel = () => {
+    setSelectedBook(null)
   }
 
   return (
@@ -36,9 +41,15 @@ const App = () => {
       <Header />
       <GlobalStyle />
       {books.length > 0 && (
-        <BooksContainer books={books} onSelect={selectBook} />
+        <BooksContainer
+          books={books}
+          onSelect={selectBook}
+          isPanelOpen={selectedBook !== null}
+        />
       )}
-      {selectedBook && <DetailPanel book={selectedBook} />}
+      {selectedBook && (
+        <DetailPanel book={selectedBook} closePanel={closePanel} />
+      )}
     </>
   )
 }
